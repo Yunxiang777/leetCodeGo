@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeetCode</title>
+    <!-- Corrected CSS link with protocol -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css">
+    <!-- Include jQuery (necessary for DataTables) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Corrected JS link with protocol -->
+    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+</head>
+<body>
+    <table id="myTable" class="display">
+        <thead>
+            <tr>
+                <th>主題</th>
+                <th>內容</th>
+                <th>解法</th>
+                <th>心得</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Two Sum</td>
+                <td>
+                    <pre>Given an array of integers nums and an integer target, 
+return indices of the two numbers such that they add up to target. 
+You may assume that each input would have exactly one solution, 
+and you may not use the same element twice. 
+You can return the answer in any order.
+Example 1:
+
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+Example 2:
+
+Input: nums = [3,2,4], target = 6
+Output: [1,2]
+Example 3:
+
+Input: nums = [3,3], target = 6
+Output: [0,1]
+                    </pre>
+                </td>
+                <td>
+                    <pre>
+class Solution {
+
+    /**
+        * @param Integer[] $nums
+        * @param Integer $target
+        * @return Integer[]
+        */
+    function twoSum($nums, $target) {
+        $map = [];
+        foreach($nums as $index => $num)
+        {
+            $diff = $target - $num;
+            if (array_key_exists($num, $map)) {
+                return [$map[$num], $index];
+            } else {
+                $map[$diff] = $index;
+            }
+        }
+    }
+}
+                    </pre>
+                </td>
+                <td>
+<p>使用Hashing哈希表，使得迴圈只跑一次，加快效能</p>
+<p>𝑂(1)常數，查找和插入時間複雜度，不論表有多大，都可以在常數時間內完成</p>
+<p>哈希表在處理大量資料時非常高效</p>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        // Initialize DataTables on the table with the specified ID
+        $(document).ready(function() {
+            $('#myTable').DataTable();
+        });
+    </script>
+</body>
+</html>
